@@ -14,6 +14,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1mApLCqhpX2lmBcI66PpU0ov3Wu" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -22,6 +25,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
@@ -69,6 +73,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="280" y="0" key="CommitChangelistDialog2" timestamp="1608958936419">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="280" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1608958936419" />
     <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1608946289643">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

@@ -10,15 +10,6 @@ block = pygame.image.load('block.png')
 l, r, u, d = tuple(pygame.image.load(f'{i}.png') for i in ['l', 'r', 'u', 'd'])
 
 win = pygame.display.set_mode((width, height))
-right_is_held = False
-pressed = False
-player_plays = True
-
-pygame.display.set_caption('This is a screen')
-
-for x in range(board_width):
-    for y in range(board_height // 2):
-        win.blit(l, (32 * x, 64 * y))
 
 def turn_coord_to_img(image, temp_x, temp_y):
     win.blit(image, (temp_x, temp_y))
@@ -71,19 +62,16 @@ def check_collisions(blocks):
     """
     s = set(b for b in blocks)
     collided = set()
-    empty_blocks = set()
 
     for b, x, y in blocks:
         if b is l and (r, x - 1, y) in s:
             collided.add((b, x, y))
         elif b is r and (l, x + 1, y) in s:
             collided.add((b, x, y))
-            empty_blocks.add((x, y))
         elif b is u and (d, x, y + 1) in s:
             collided.add((b, x, y))
         elif b is d and (u, x, y - 1) in s:
             collided.add((b, x, y))
-            empty_blocks.add((x, y))
 
     for b, x, y in collided:
         blocks.remove((b, x, y))
@@ -91,6 +79,9 @@ def check_collisions(blocks):
     return collided
 
 def remove_collided(collided, win):
+    """
+    Read the name.
+    """
     for b, x, y in collided:
         if b is l or b is r:
             win.blit(block, board_coords_to_blip_coords(x, y))
@@ -102,6 +93,9 @@ def remove_collided(collided, win):
     pygame.display.update()
 
 def slide(blocks):
+    """
+    Calculates the new positions for the blocks, after sliding
+    """
     temp = []
 
     for b, x, y in blocks:
@@ -134,11 +128,6 @@ def get_coords_of_empty_2x2s(blocks, size):
 
     for x, y in generate_blocks_in_board(size):
         if (x, y) not in seen:
-            print(x, y)
-            assert (x, y + 1) not in seen
-            assert (x + 1, y + 1) not in seen
-            assert (x + 1, y) not in seen
-
             ret.append((x, y))
             seen.add((x, y + 1))
             seen.add((x + 1, y + 1))
