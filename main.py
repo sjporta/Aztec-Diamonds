@@ -9,14 +9,9 @@ width, height = square_width * board_width, square_width * board_height
 block = pygame.image.load('block.png')
 l, r, u, d = tuple(pygame.image.load(f'{i}.png') for i in ['l', 'r', 'u', 'd'])
 
-win = pygame.display.set_mode((width, height))
-
-def turn_coord_to_img(image, temp_x, temp_y):
-    win.blit(image, (temp_x, temp_y))
-
 def board_coords_to_blip_coords(x, y):
-    return (32 * (board_width // 2 - 1) + square_width * x,
-            32 * board_height // 2 - square_width * y)
+    return (square_width * (board_width // 2 - 1) + square_width * x,
+            square_width * board_height // 2 - square_width * y)
 
 def generate_blocks_in_board(size):
     """
@@ -38,7 +33,7 @@ def generate_blocks_in_board(size):
             elif taxi == size + 1 and i > 0 and j > 0:
                 yield(i, j)
 
-def update_board(blocks, size, win=win):
+def update_board(blocks, size, win):
     """
     Updates the board, re-painting the tiles and dominoes.
     """
@@ -152,6 +147,7 @@ def randomize_empty_blocks(empty):
     return ret
 
 def play():
+    win = pygame.display.set_mode((width, height))
 
     blocks = randomize_empty_blocks([(0, 0)])
     size = 1
